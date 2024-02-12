@@ -1,14 +1,22 @@
 from .models import Blog, Comment, UserProfile, Category, Tag, Contact, Reply
 from django.contrib.auth.models import User
 from django import forms
-from ckeditor.widgets import CKEditorWidget
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 # Create your forms here.
 class BlogForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    def __init__(self, *args, **kwargs):
+          super().__init__(*args, **kwargs)
+          self.fields["text"].required = False
+    # content = forms.CharField(widget=CKEditor5Widget())
     class Meta:
         model = Blog
         fields = ['title', 'content', 'category', 'tags']
+        widgets = {
+            'content': CKEditor5Widget(
+                attrs={"class": "django_ckeditor_5"}, config_name="blog"
+            ),
+        }
 
 class CommentForm(forms.ModelForm):
     class Meta:
