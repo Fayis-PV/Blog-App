@@ -1,4 +1,4 @@
-from .models import Blog, Comment, UserProfile, Category, Tag
+from .models import Blog, Comment, UserProfile, Category, Tag, Contact, Reply
 from django.contrib.auth.models import User
 from django import forms
 
@@ -32,4 +32,13 @@ class TagForm(forms.ModelForm):
     class Meta:
         model = Tag
         fields = ['name']
-        
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'subject', 'message']
+    
+class ReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ['message']
