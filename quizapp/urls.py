@@ -29,7 +29,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('contact/send/', views.send_contact, name='send_contact'),
-    path('contact/replies/', views.replies, name='replies'),
     path('contact/delete/<int:id>/', views.delete_contact, name='delete_contact'),
     path('contact/reply/<int:id>/', views.reply_contact, name='reply_contact'),
     path('contact/reply/delete/<int:id>/', views.delete_reply, name='delete_reply'),
