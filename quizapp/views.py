@@ -310,78 +310,36 @@ def update_reply(request, contact_id):
         form = ReplyForm(instance=reply)
     return render(request, 'reply_form.html', {'form': form})
 
-
-
-
 def user_list(request):
     users = User.objects.all()
     return render(request, 'user_list.html', {'users': users})
 
-def user_detail(request, user_id):
-    user = User.objects.get(id=user_id)
-    return render(request, 'user_detail.html', {'user': user})
 
-def user_delete(request, user_id):
-    user = User.objects.get(id=user_id)
-    user.delete()
-    return redirect('user_list')
+'''
+htmls need to be created
+index.html
+blog_list.html
+blog_detail.html
+blog_form.html
+comment_form.html
+category_list.html
+category_detail.html
+category_form.html
+tag_list.html
+tag_detail.html
+tag_form.html
+profile.html
+profile_form.html
+about.html
+contact.html
+reply_contact.html
+reply_form.html
+user_list.html
+user_detail.html
+user_form.html
+user_profile.html
+user_profile_form.html
+user_profile_list.html
+user_profile_detail.html
 
-def user_update(request, user_id):
-    user = User.objects.get(id=user_id)
-    if request.method == 'POST':
-        form = UserForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect('user_list')
-    else:
-        form = UserForm(instance=user)
-    return render(request, 'user_form.html', {'form': form})
-
-def user_create(request):
-    if request.method == 'POST':
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('user_list')
-    else:
-        form = UserForm()
-    return render(request, 'user_form.html', {'form': form})
-
-def user_profile(request, user_id):
-    user = User.objects.get(id=user_id)
-    return render(request, 'user_profile.html', {'user': user})
-
-def user_profile_update(request, user_id):
-    user = User.objects.get(id=user_id)
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES, instance=user.userprofile)
-        if form.is_valid():
-            form.save()
-            return redirect('user_list')
-    else:
-        form = UserProfileForm(instance=user.userprofile)
-    return render(request, 'user_profile_form.html', {'form': form})
-
-def user_profile_delete(request, user_id):
-    user = User.objects.get(id=user_id)
-    user.userprofile.delete()
-    return redirect('user_list')
-
-def user_profile_create(request):
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('user_list')
-    else:
-        form = UserProfileForm()
-    return render(request, 'user_profile_form.html', {'form': form})    
-
-def user_profile_list(request):
-    userprofiles = UserProfile.objects.all()
-    return render(request, 'user_profile_list.html', {'userprofiles': userprofiles})
-
-def user_profile_detail(request, userprofile_id):
-    userprofile = UserProfile.objects.get(id=userprofile_id)
-    return render(request, 'user_profile_detail.html', {'userprofile': userprofile})
-
+'''
