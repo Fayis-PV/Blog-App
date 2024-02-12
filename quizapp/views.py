@@ -122,7 +122,7 @@ def category_create(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('category_list')
+            return redirect('categories')
     else:
         form = CategoryForm()
     return render(request, 'category_form.html', {'form': form})
