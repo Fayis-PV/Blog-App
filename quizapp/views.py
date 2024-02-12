@@ -314,32 +314,3 @@ def user_list(request):
     users = User.objects.all()
     return render(request, 'user_list.html', {'users': users})
 
-
-'''
-htmls need to be created
-index.html
-blog_list.html
-blog_detail.html
-blog_form.html
-comment_form.html
-category_list.html
-category_detail.html
-category_form.html
-tag_list.html
-tag_detail.html
-tag_form.html
-profile.html
-profile_form.html
-about.html
-contact.html
-reply_contact.html
-reply_form.html
-user_list.html
-user_detail.html
-user_form.html
-user_profile.html
-user_profile_form.html
-user_profile_list.html
-user_profile_detail.html
-
-'''
