@@ -256,6 +256,61 @@ def search(request):
     ).distinct()
     return render(request, 'blog_list.html', {'blogs': blogs})
 
+def send_contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        send_mail(
+            'Contact Form',
+            message+'\nFrom:\n'+name+'\n'+email,
+            email,
+            [settings.EMAIL_HOST_USER],
+            fail_silently=False,
+        )
+        return redirect('contact')
+    return redirect('contact')
+
+@login_required
+def delete_contact(request, contact_id):
+    Contact.objects.get(id=contact_id).delete()
+    return redirect('contact')
+
+@login_required
+def reply_contact(request, contact_id):
+    contact = Contact.objects.get(id=contact_id)
+    if request.method == 'POST':
+        message = request.POST.get('message')
+        send_mail(
+            'Contact Form',
+            message,
+            settings.EMAIL_HOST_USER,
+            [contact.email],
+            fail_silently=False,
+        )
+        return redirect('contact')
+    return render(request, 'reply_contact.html', {'contact': contact})
+
+@login_required
+def delete_reply(request, contact_id):
+    Reply.objects.get(id=contact_id).delete()
+    return redirect('contact')
+
+@login_required
+def update_reply(request, contact_id):
+    reply = Reply.objects.get(id=contact_id)
+    if request.method == 'POST':
+        form = ReplyForm(request.POST, instance=reply)
+        if form.is_valid():
+            form.save()
+            return redirect('contact')
+    else:
+        form = ReplyForm(instance=reply)
+    return render(request, 'reply_form.html', {'form': form})
+
+
+
+
 def user_list(request):
     users = User.objects.all()
     return render(request, 'user_list.html', {'users': users})
