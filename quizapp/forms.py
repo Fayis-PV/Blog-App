@@ -7,7 +7,7 @@ from django_ckeditor_5.widgets import CKEditor5Widget
 class BlogForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
           super().__init__(*args, **kwargs)
-          self.fields["text"].required = False
+          self.fields["content"].required = False
     # content = forms.CharField(widget=CKEditor5Widget())
     class Meta:
         model = Blog

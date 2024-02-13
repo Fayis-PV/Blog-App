@@ -111,8 +111,8 @@ def category_list(request):
     return render(request, 'category_list.html', {'categories': categories})
 
 @login_required
-def category_detail(request, category_id):
-    category = Category.objects.get(id=category_id)
+def category_detail(request, id):
+    category = Category.objects.get(pk=id)
     blogs = Blog.objects.filter(category=category)
     return render(request, 'category_detail.html', {'category': category, 'blogs': blogs})
 

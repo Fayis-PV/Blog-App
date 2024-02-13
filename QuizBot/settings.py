@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_ckeditor_5',
+    'tailwind',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +57,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware', 
 ]
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+NPM_BIN_PATH = 'C:/Program Files/nodejs/node_modules/npm/bin/npm.cmd'
 
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = 'email'

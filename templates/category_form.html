@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<h2>Write a New Category</h2>
-<form method="post">
+# div with padding 10px
+
+<h2 style="margin-top: 100px;">Write a New Category</h2>
+<form method="post" >
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
