@@ -1,4 +1,5 @@
 {% load static %}
+{% load tailwind_css %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,14 +33,9 @@
   <!-- Template Main CSS Files -->
   <link href="{% static "css/variables.css" %}" rel="stylesheet">
   <link href="{% static "css/main.css" %}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: ZenBlog
-  * Updated: Jan 29 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-  * Author: BootstrapMade.com
-  * License: https:///bootstrapmade.com/license/
-  ======================================================== -->
+  {% compress css %}
+  <link rel="stylesheet" href="{% static 'src/output.css' %}">
+  {% endcompress %}
 </head>
 
 <body>

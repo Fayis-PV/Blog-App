@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_ckeditor_5',
-    'tailwind',
-    'theme',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -57,12 +56,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware', 
 ]
-
-TAILWIND_APP_NAME = 'theme'
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
-NPM_BIN_PATH = 'C:/Program Files/nodejs/node_modules/npm/bin/npm.cmd'
 
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = 'email'
@@ -145,6 +138,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'statics')
 ]
+
+ 
+COMPRESS_ROOT = BASE_DIR / 'static'
+ 
+COMPRESS_ENABLED = True
+ 
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
